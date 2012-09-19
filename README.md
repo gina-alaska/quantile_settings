@@ -1,6 +1,6 @@
 ## Quantile Settings
 
-Quick app put together to manager runs using different settings
+Quick app put together to manage quantile mapping runs using different settings
 
 ### External dependencies
 
