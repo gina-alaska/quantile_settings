@@ -10,19 +10,19 @@
   .control-group
     = f.label :historial_start, class: 'control-label'
     .controls
-      = f.number_field :historial_start, in: 1900..2010, placeholder: "YYYY"
+      = f.number_field :historial_start, in: 1957..2002, placeholder: "YYYY"
   .control-group
     = f.label :historical_end, class: 'control-label'
     .controls
-      = f.number_field :historical_end, in: 1900..2010, placeholder: "YYYY"
+      = f.number_field :historical_end, in: 1957..2002, placeholder: "YYYY"
   .control-group
     = f.label :predicted_start, class: 'control-label'
     .controls
-      = f.number_field :predicted_start, in: 1900..2010, placeholder: "YYYY"
+      = f.number_field :predicted_start, in: 2006..2100, placeholder: "YYYY"
   .control-group
     = f.label :predicted_end, class: 'control-label'
     .controls
-      = f.number_field :predicted_end, in: 1900..2010, placeholder: "YYYY"
+      = f.number_field :predicted_end, in: 2006..2100, placeholder: "YYYY"
   .control-group
     = f.label :period_id, class: 'control-label'
     .controls
