@@ -6,6 +6,11 @@ class DoMapping
     
     settings.start
     # do the stuff to run the command here
+    script = '/home/jiang/projects/quantilemapping/v3/quantile_mapping_grids_v3_run.py'
+    cmd = [script, settings.historial_start, settings.historical_end, settings.predicted_start, settings.predicted_end, settings.period.name, settings.algorithm]
+    #script.py 1910 2001 2030 2060 Yearly 0
+    puts "Running: #{cmd.join(' ')}"
+    puts `#{cmd.join(' ')}`  
     
     settings.finish
   rescue => e
