@@ -1,0 +1,32 @@
+.row
+  .span6.offset3
+    %h1 Quantile setting
+    
+    %p#notice= notice
+    %p
+      %b Historial start:
+      = @quantile_setting.historial_start
+    %p
+      %b Historical end:
+      = @quantile_setting.historical_end
+    %p
+      %b Predicted start:
+      = @quantile_setting.predicted_start
+    %p
+      %b Predicted end:
+      = @quantile_setting.predicted_end
+    %p
+      %b Period:
+      = @quantile_setting.period.try(:name)
+    %p
+      %b Algorithm:
+      = @quantile_setting.algorithm
+    %p
+      %b Status:
+      = @quantile_setting.status
+  
+    = link_to quantile_settings_path, class: 'btn btn-inverse' do
+      %i.icon-arrow-left.icon-white
+      Back
+
+    = link_to 'Edit', edit_quantile_setting_path(@quantile_setting), class: 'btn'

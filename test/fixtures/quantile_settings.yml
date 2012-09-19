@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  historial_start: 1
+  historical_end: 1
+  predicted_start: 1
+  predicted_end: 1
+  period_id: 1
+  algorithm: 1
+
+two:
+  historial_start: 1
+  historical_end: 1
+  predicted_start: 1
+  predicted_end: 1
+  period_id: 1
+  algorithm: 1

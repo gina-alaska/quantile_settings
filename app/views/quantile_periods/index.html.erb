@@ -1,0 +1,23 @@
+<h1>Listing quantile_periods</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @quantile_periods.each do |quantile_period| %>
+  <tr>
+    <td><%= quantile_period.name %></td>
+    <td><%= link_to 'Show', quantile_period %></td>
+    <td><%= link_to 'Edit', edit_quantile_period_path(quantile_period) %></td>
+    <td><%= link_to 'Destroy', quantile_period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Quantile period', new_quantile_period_path %>

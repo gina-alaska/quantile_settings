@@ -1,0 +1,38 @@
+= form_for(@quantile_setting, html: { class: 'form-horizontal' }) do |f|
+  - if @quantile_setting.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@quantile_setting.errors.count, "error")
+        prohibited this quantile_setting from being saved:
+      %ul
+        - @quantile_setting.errors.full_messages.each do |msg|
+          %li= msg
+  .control-group
+    = f.label :historial_start, class: 'control-label'
+    .controls
+      = f.number_field :historial_start, in: 1900..2010, placeholder: "YYYY"
+  .control-group
+    = f.label :historical_end, class: 'control-label'
+    .controls
+      = f.number_field :historical_end, in: 1900..2010, placeholder: "YYYY"
+  .control-group
+    = f.label :predicted_start, class: 'control-label'
+    .controls
+      = f.number_field :predicted_start, in: 1900..2010, placeholder: "YYYY"
+  .control-group
+    = f.label :predicted_end, class: 'control-label'
+    .controls
+      = f.number_field :predicted_end, in: 1900..2010, placeholder: "YYYY"
+  .control-group
+    = f.label :period_id, class: 'control-label'
+    .controls
+      = f.select :period_id, options_from_collection_for_select(QuantilePeriod.all, :id, :name)
+  .control-group
+    = f.label :algorithm, class: 'control-label'
+    .controls
+      = f.number_field :algorithm, in: 0..9
+  .actions.pull-right
+    = link_to (@quantile_setting.new_record? ? quantile_settings_path : quantile_setting_path(@quantile_setting)), class: 'btn btn-inverse' do
+      %i.icon-arrow-left.icon-white
+      Back
+    = f.submit  class: 'btn btn-primary'

@@ -1,0 +1,2 @@
+module QuantilePeriodsHelper
+end

@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'haml'
 gem 'bootstrap-sass', '~> 2.1.0.0'
+gem 'sidekiq'
 
 # Gems used only for assets and not required
 # in production environments by default.
