@@ -26,5 +26,4 @@ Seed the database
     
 ### Start the workers
 
-    screen
-    bundle exec sidekiq
+    screen bundle exec sidekiq
