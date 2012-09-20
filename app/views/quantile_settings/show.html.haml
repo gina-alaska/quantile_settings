@@ -30,3 +30,11 @@
       Back
 
     = link_to 'Edit', edit_quantile_setting_path(@quantile_setting), class: 'btn'
+    
+    = link_to quantile_setting_path(@quantile_setting), class: 'btn' do
+      %i.icon-refresh
+      Refresh
+    
+    = link_to run_quantile_setting_path(@quantile_setting), method: :post, class: 'btn btn-success' do
+      Run
+      %i.icon-arrow-right.icon-white

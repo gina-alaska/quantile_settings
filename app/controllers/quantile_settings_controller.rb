@@ -45,8 +45,7 @@ class QuantileSettingsController < ApplicationController
       if @quantile_setting.queue
         format.html { redirect_to @quantile_setting, notice: 'Quantile setting was successfully queued.' }
       end
-    end
-    
+    end    
   end
 
   # POST /quantile_settings
