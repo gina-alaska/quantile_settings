@@ -6,6 +6,8 @@ class Report < ActiveRecord::Base
   
   after_create :queue
   
+  REPORT_BASEPATH = Rails.root.join('public', 'reports').to_s
+  
   def queue
     self.status = 'Queued'
     self.save!
@@ -26,6 +28,13 @@ class Report < ActiveRecord::Base
   def finish
     self.status = 'Finished'
     self.save!
+  end
+  
+  def files
+    path = File.join(REPORT_BASEPATH, self.id.to_s)
+    Dir.glob(File.join(path, '*.png')).collect do |f|
+      f.gsub(Rails.public_path, '')
+    end
   end
   
   def column1_file

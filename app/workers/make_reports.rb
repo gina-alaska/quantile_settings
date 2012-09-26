@@ -13,7 +13,11 @@ class MakeReports
     cmd = [script, data_dir, "\"#{report.column1_file} #{report.column2_file}\"", report.location.lon, report.location.lat, "\"#{report.location.name}\"", report.low_temp_threshold, report.high_temp_threshold]
     
     puts "Running: #{cmd.join(' ')}"
-    puts `#{cmd.join(' ')}`  
+    puts `#{cmd.join(' ')}` 
+    
+    report_path = Rails.root.join('public', 'reports', report.id).to_s
+    FileUtils.mkdir_p(report_path)
+    `cp extreme_day_count_#{File.basename(report.column1_file, '.tif')}_#{File.basename(report.column2_file, '.tif')}*.png #{report_path}` 
     
     report.finish
   rescue => e
