@@ -2,7 +2,7 @@ class QuantileSetting < ActiveRecord::Base
   belongs_to :period, class_name: 'QuantilePeriod'
   has_many :reports
   
-  attr_accessible :algorithm, :historial_start, :historical_end, :period_id, :predicted_end, :predicted_start
+  attr_accessible :algorithm, :historical_start, :historical_end, :period_id, :predicted_end, :predicted_start
   
   def as_args
     #TODO: figure out what the args should be to run the quantile command

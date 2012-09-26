@@ -8,9 +8,9 @@
         - @quantile_setting.errors.full_messages.each do |msg|
           %li= msg
   .control-group
-    = f.label :historial_start, class: 'control-label'
+    = f.label :historical_start, class: 'control-label'
     .controls
-      = f.number_field :historial_start, in: 1957..2002, placeholder: "YYYY"
+      = f.number_field :historical_start, in: 1957..2002, placeholder: "YYYY"
   .control-group
     = f.label :historical_end, class: 'control-label'
     .controls
