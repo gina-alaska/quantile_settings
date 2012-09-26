@@ -1,8 +1,15 @@
 QuantileMapping::Application.routes.draw do
+
+  resources :locations
+
   resources :quantile_periods
 
   resources :quantile_settings do
     post :run, on: :member
+    
+    resources :reports do
+      post :run, on: :member
+    end
   end
 
   # The priority is based upon order of creation:

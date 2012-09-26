@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  low_temp_threshold: 1
+  high_temp_threshold: 1
+  historical: false
+  observed: false
+  predicted: false
+  adjusted: false
+  quantile_settings_id: 1
+
+two:
+  low_temp_threshold: 1
+  high_temp_threshold: 1
+  historical: false
+  observed: false
+  predicted: false
+  adjusted: false
+  quantile_settings_id: 1

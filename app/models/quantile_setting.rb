@@ -1,5 +1,6 @@
 class QuantileSetting < ActiveRecord::Base
   belongs_to :period, class_name: 'QuantilePeriod'
+  has_many :reports
   
   attr_accessible :algorithm, :historial_start, :historical_end, :period_id, :predicted_end, :predicted_start
   

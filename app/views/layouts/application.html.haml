@@ -10,6 +10,8 @@
       .navbar.navbar-static-top.navbar-inverse
         .navbar-inner
           = link_to 'Quantile Mapping Settings', root_path, class: 'brand'
+          %ul.nav.pull-right
+            %li= link_to 'Quantile Data', quantile_settings_path
       .content
         = yield
       %footer

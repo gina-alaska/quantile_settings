@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919214442) do
+ActiveRecord::Schema.define(:version => 20120926222140) do
+
+  create_table "locations", :force => true do |t|
+    t.decimal  "lon"
+    t.decimal  "lat"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "quantile_periods", :force => true do |t|
     t.string   "name"
@@ -20,15 +28,27 @@ ActiveRecord::Schema.define(:version => 20120919214442) do
   end
 
   create_table "quantile_settings", :force => true do |t|
-    t.integer  "historial_start"
+    t.integer  "historical_start"
     t.integer  "historical_end"
     t.integer  "predicted_start"
     t.integer  "predicted_end"
     t.integer  "period_id"
     t.integer  "algorithm"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.string   "status",          :default => "Queued"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "status",           :default => "Queued"
+  end
+
+  create_table "reports", :force => true do |t|
+    t.integer  "low_temp_threshold"
+    t.integer  "high_temp_threshold"
+    t.string   "column1"
+    t.string   "column2"
+    t.string   "status",              :default => "new"
+    t.integer  "quantile_setting_id"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "location_id"
   end
 
 end

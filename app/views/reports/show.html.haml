@@ -1,0 +1,30 @@
+- if notice.present?
+  %p#notice.alert.alert-notice
+    = notice
+%p
+  %b Low temp threshold:
+  = @report.low_temp_threshold
+%p
+  %b High temp threshold:
+  = @report.high_temp_threshold
+%p
+  %b Column 1:
+  = @report.column1
+%p
+  %b Column 2:
+  = @report.column2
+%p
+  %b Location:
+  = @report.location.try(:name)
+%p
+  %b Status:
+  = @report.status
+  
+
+= link_to quantile_setting_reports_path(@quantile_setting), class: 'btn btn-inverse' do
+  %i.icon-arrow-left.icon-white
+  Back
+
+= link_to 'Run', run_quantile_setting_report_path(@quantile_setting, @report), method: :post, class: 'btn btn-success'
+  
+= link_to 'Edit', edit_quantile_setting_report_path([@quantile_setting, @report]), class: 'btn'
