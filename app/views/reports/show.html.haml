@@ -25,6 +25,9 @@
   %i.icon-arrow-left.icon-white
   Back
 
-= link_to 'Run', run_quantile_setting_report_path(@quantile_setting, @report), method: :post, class: 'btn btn-success'
-  
 = link_to 'Edit', edit_quantile_setting_report_path([@quantile_setting, @report]), class: 'btn'
+
+= link_to run_quantile_setting_report_path(@quantile_setting, @report), method: :post, class: 'btn btn-success' do
+  Run
+  %i.icon-arrow-right.icon-white
+  
