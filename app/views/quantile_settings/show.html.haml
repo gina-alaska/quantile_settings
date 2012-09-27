@@ -29,6 +29,6 @@
       %i.icon-refresh
       Refresh
     
-    = link_to run_quantile_setting_path(@quantile_setting), method: :post, class: 'btn btn-success' do
+    = link_to run_quantile_setting_path(@quantile_setting), method: :post, class: 'btn btn-success', "data-skip-pjax" => true do
       Run
       %i.icon-arrow-right.icon-white

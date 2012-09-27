@@ -28,7 +28,7 @@
         %td= quantile_setting.predicted_end
         %td= quantile_setting.status
         %td
-          = link_to 'Run', run_quantile_setting_path(quantile_setting), method: :post, class: 'btn btn-success'
+          = link_to 'Run', run_quantile_setting_path(quantile_setting), method: :post, class: 'btn btn-success', "data-skip-pjax" => true
           = link_to 'Reports', quantile_setting_reports_path(quantile_setting), class: 'btn'
           = link_to 'Edit', edit_quantile_setting_path(quantile_setting), class: 'btn'
           = link_to 'Destroy', quantile_setting, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

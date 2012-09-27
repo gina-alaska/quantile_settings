@@ -33,6 +33,6 @@
         %td= report.location.try(:name)
         %td= report.status
         %td
-          = link_to 'Run', run_quantile_setting_report_path(@quantile_setting, report), method: :post, class: 'btn btn-success'          
+          = link_to 'Run', run_quantile_setting_report_path(@quantile_setting, report), method: :post, class: 'btn btn-success', "data-skip-pjax" => true 
           = link_to 'Show', [@quantile_setting, report], class: 'btn'
           = link_to 'Destroy', [@quantile_setting, report], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
