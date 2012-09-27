@@ -1,45 +1,64 @@
+.navbar
+  .navbar-inner
+    .navbar-text.pull-left
+      %h4
+        Report: 
+        %span.text-success= @report.status
+    .pull-right
+      = link_to quantile_setting_reports_path(@quantile_setting), class: 'btn btn-inverse' do
+        %i.icon-arrow-left.icon-white
+        Back
+
+      = link_to 'Edit', edit_quantile_setting_report_path(@quantile_setting, @report), class: 'btn'
+
+      = link_to [@quantile_setting, @report], class: 'btn' do
+        %i.icon-refresh
+        Refresh
+      
+      = link_to run_quantile_setting_report_path(@quantile_setting, @report), method: :post, class: 'btn btn-success', "data-skip-pjax" => true do
+        Run
+        %i.icon-arrow-right.icon-white
+      
+        
 - if notice.present?
   %p#notice.alert.alert-notice
     = notice
-.row-fluid
-  .span5
-    %p
-      %b Low temp threshold:
-      = @report.low_temp_threshold
-    %p
-      %b High temp threshold:
-      = @report.high_temp_threshold
-    %p
-      %b Column 1:
-      = @report.column1
-    %p
-      %b Column 2:
-      = @report.column2
-    %p
-      %b Location:
-      = @report.location.try(:name)
-    %p
-      %b Status:
-      = @report.status
-    = link_to quantile_setting_reports_path(@quantile_setting), class: 'btn btn-inverse' do
-      %i.icon-arrow-left.icon-white
-      Back
 
-    = link_to 'Edit', edit_quantile_setting_report_path(@quantile_setting, @report), class: 'btn'
+%h4 Quantile Settings
+.well= render @quantile_setting 
+       
+%h4 Report Settings
+.well
+  .row-fluid
+    .span4
+      %p
+        %b Low temp threshold:
+        = @report.low_temp_threshold
+      %p
+        %b High temp threshold:
+        = @report.high_temp_threshold
+    .span4
+      %p
+        %b Column 1:
+        = @report.column1
+      %p
+        %b Column 2:
+        = @report.column2
+    .span4
+      %p
+        %b Location:
+        = @report.location.try(:name)
+      %p
+        %b Status:
+        = @report.status
 
-    = link_to [@quantile_setting, @report], class: 'btn' do
-      %i.icon-refresh
-      Refresh
-
-    = link_to run_quantile_setting_report_path(@quantile_setting, @report), method: :post, class: 'btn btn-success' do
-      Run
-      %i.icon-arrow-right.icon-white
-
-  .span7
-    - @report.files.each do |f|
-      .thumbnail
-        = link_to f, "data-skip-pjax" => true do
-          = image_tag f
-      %br
-
+%h4 Reports
+- if @report.files.present?
+  - @report.files.each do |f|
+    .thumbnail
+      = link_to f, "data-skip-pjax" => true do
+        = image_tag f
+    %br
+- else
+  No reports available yet
   

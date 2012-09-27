@@ -12,8 +12,12 @@
       = link_to 'New Report', new_quantile_setting_report_path(@quantile_setting), class: 'btn btn-primary'
         
 = show_flash_messages
+
+%h4 Quantile Settings
+.well= render @quantile_setting
         
-%table.table.table-striped
+%h4 Reports
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th Low temp threshold

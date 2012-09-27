@@ -1,23 +1,9 @@
 .row
   .span6.offset3
     %h1 Quantile setting
-    
     %p#notice= notice
-    %p
-      %b Historical start:
-      = @quantile_setting.historical_start
-    %p
-      %b Historical end:
-      = @quantile_setting.historical_end
-    %p
-      %b Predicted start:
-      = @quantile_setting.predicted_start
-    %p
-      %b Predicted end:
-      = @quantile_setting.predicted_end
-    %p
-      %b Status:
-      = @quantile_setting.status
+    
+    = render @quantile_setting
   
     = link_to quantile_settings_path, class: 'btn btn-inverse' do
       %i.icon-arrow-left.icon-white
