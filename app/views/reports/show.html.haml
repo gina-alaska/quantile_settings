@@ -38,7 +38,7 @@
   .span7
     - @report.files.each do |f|
       .thumbnail
-        = link_to f do
+        = link_to f, "data-skip-pjax" => true do
           = image_tag f
       %br
 
