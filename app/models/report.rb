@@ -7,10 +7,13 @@ class Report
   field :column2, type: String
   field :status, type: String, default: 'New'
   
-  attr_accessible :high_temp_threshold, :low_temp_threshold, :column1, :column2
+  attr_accessible :high_temp_threshold, :low_temp_threshold, :column1, :column2, :location_id
   
   belongs_to :quantile_setting
   belongs_to :location
+
+  accepts_nested_attributes_for :location
+  
   
   after_create :queue
   

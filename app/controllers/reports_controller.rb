@@ -38,7 +38,8 @@ class ReportsController < ApplicationController
   # GET /reports/new.json
   def new
     @report = @quantile_setting.reports.new
-
+    @report.location = Location.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @report }
