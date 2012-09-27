@@ -1,5 +1,13 @@
-class Report < ActiveRecord::Base
-  attr_accessible :high_temp_threshold, :low_temp_threshold, :column1, :column2, :quantile_settings_id, :location_id
+class Report
+  include Mongoid::Document
+  
+  field :high_temp_threshold, type: Integer
+  field :low_temp_threshold, type: Integer
+  field :column1, type: String
+  field :column2, type: String
+  field :status, type: String, default: 'New'
+  
+  attr_accessible :high_temp_threshold, :low_temp_threshold, :column1, :column2
   
   belongs_to :quantile_setting
   belongs_to :location

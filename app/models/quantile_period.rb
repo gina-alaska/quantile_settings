@@ -1,5 +1,7 @@
-class QuantilePeriod < ActiveRecord::Base
-  has_many :settings, class_name: 'QuantileSetting'
+class QuantilePeriod
+  include Mongoid::Document
+  
+  field :name, type: String
   
   attr_accessible :name
 end

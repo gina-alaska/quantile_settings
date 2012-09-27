@@ -1,8 +1,15 @@
-class QuantileSetting < ActiveRecord::Base
-  belongs_to :period, class_name: 'QuantilePeriod'
+class QuantileSetting
+  include Mongoid::Document
+  
+  field :historical_start, type: Integer
+  field :historical_end, type: Integer
+  field :predicted_start, type: Integer
+  field :predicted_end, type: Integer
+  field :status, type: String, default: 'New'
+  
   has_many :reports
   
-  attr_accessible :algorithm, :historical_start, :historical_end, :period_id, :predicted_end, :predicted_start
+  attr_accessible :historical_start, :historical_end, :predicted_end, :predicted_start
   
   validates :historical_start, inclusion: { in: 1957..2002, message: "%{value} must be between 1957 and 2002" }
   validates :historical_end, inclusion: { in: 1957..2002, message: "%{value} must be between 1957 and 2002" }
