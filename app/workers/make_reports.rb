@@ -18,7 +18,9 @@ class MakeReports
     
     report_path = Rails.root.join('public', 'reports', report.id.to_s).to_s
     FileUtils.mkdir_p(report_path)
-    `cp #{data_dir}/extreme_day_count_#{File.basename(report.column1_file, '.tif')}_#{File.basename(report.column2_file, '.tif')}*.png #{report_path}` 
+    
+    reports = File.join(data_dir, "extreme_day_count_#{File.basename(report.column1_file, '.tif')}_#{File.basename(report.column2_file, '.tif')}*.png")
+    `cp #{reports} #{report_path}` 
     
     report.finish
   rescue => e
