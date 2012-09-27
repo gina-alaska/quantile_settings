@@ -55,7 +55,7 @@ class QuantileSettingsController < ApplicationController
 
     respond_to do |format|
       if @quantile_setting.save
-        format.html { redirect_to @quantile_setting, notice: 'Quantile setting was successfully created.' }
+        format.html { redirect_to quantile_settings_path, notice: 'Quantile setting was successfully created.' }
         format.json { render json: @quantile_setting, status: :created, location: @quantile_setting }
       else
         format.html { render action: "new" }
@@ -71,7 +71,7 @@ class QuantileSettingsController < ApplicationController
 
     respond_to do |format|
       if @quantile_setting.update_attributes(params[:quantile_setting])
-        format.html { redirect_to @quantile_setting, notice: 'Quantile setting was successfully updated.' }
+        format.html { redirect_to quantile_settings_path, notice: 'Quantile setting was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -2,7 +2,7 @@
   %p#notice.alert.alert-notice
     = notice
 .row-fluid
-  .span4
+  .span5
     %p
       %b Low temp threshold:
       = @report.low_temp_threshold
@@ -27,10 +27,15 @@
 
     = link_to 'Edit', edit_quantile_setting_report_path(@quantile_setting, @report), class: 'btn'
 
+    = link_to [@quantile_setting, @report], class: 'btn' do
+      %i.icon-refresh
+      Refresh
+
     = link_to run_quantile_setting_report_path(@quantile_setting, @report), method: :post, class: 'btn btn-success' do
       Run
       %i.icon-arrow-right.icon-white
-  .span8
+
+  .span7
     - @report.files.each do |f|
       .thumbnail
         = link_to f do

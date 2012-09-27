@@ -3,9 +3,12 @@
     .navbar-text.pull-left
       %h4 Listing quantile data
     .pull-right
+      = link_to quantile_settings_path, class: 'btn' do
+        %i.icon-refresh
+        Refresh    
       = link_to 'New Quantile setting', new_quantile_setting_path, class: 'btn btn-primary'
     
-%table.table.table-condensed.table-stripped.table-bordered
+%table.table.table-condensed.table-stripped
   %thead
     %tr
       %th Historical start
