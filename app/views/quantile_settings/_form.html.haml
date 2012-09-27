@@ -23,14 +23,6 @@
     = f.label :predicted_end, class: 'control-label'
     .controls
       = f.number_field :predicted_end, in: 2006..2100, placeholder: "YYYY"
-  .control-group
-    = f.label :period_id, class: 'control-label'
-    .controls
-      = f.select :period_id, options_from_collection_for_select(QuantilePeriod.all, :id, :name)
-  .control-group
-    = f.label :algorithm, class: 'control-label'
-    .controls
-      = f.number_field :algorithm, in: 0..9
   .actions.pull-right
     = link_to (@quantile_setting.new_record? ? quantile_settings_path : quantile_setting_path(@quantile_setting)), class: 'btn btn-inverse' do
       %i.icon-arrow-left.icon-white

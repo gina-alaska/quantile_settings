@@ -12,8 +12,6 @@
       %th Historical end
       %th Predicted start
       %th Predicted end
-      %th Period
-      %th Algorithm
       %th Status
       %th Actions
   %tbody
@@ -23,8 +21,6 @@
         %td= quantile_setting.historical_end
         %td= quantile_setting.predicted_start
         %td= quantile_setting.predicted_end
-        %td= quantile_setting.period.try(:name)
-        %td= quantile_setting.algorithm
         %td= quantile_setting.status
         %td
           = link_to 'Run', run_quantile_setting_path(quantile_setting), method: :post, class: 'btn btn-success'
