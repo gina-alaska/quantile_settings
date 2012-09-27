@@ -43,7 +43,7 @@ class QuantileSettingsController < ApplicationController
     
     respond_to do |format|
       if @quantile_setting.queue
-        format.html { redirect_to @quantile_setting, notice: 'Quantile setting was successfully queued.' }
+        format.html { redirect_to quantile_settings_path, notice: 'Quantile setting was successfully queued.' }
       end
     end    
   end
