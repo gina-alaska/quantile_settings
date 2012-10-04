@@ -2,14 +2,22 @@
   .navbar-inner
     .navbar-text.pull-left
       %h4 Listing reports
-    .pull-right
-      = link_to quantile_settings_path, class: 'btn btn-inverse' do
-        %i.icon-arrow-left.icon-white
-        Back to data
-      = link_to quantile_setting_reports_path(@quantile_setting), class: 'btn' do
-        %i.icon-refresh
-        Refresh
-      = link_to 'New Report', new_quantile_setting_report_path(@quantile_setting), class: 'btn btn-primary'
+    .btn-toolbar.pull-right{style:"margin:0px;"}
+      .btn-group
+        = link_to quantile_settings_path, class: 'btn btn-inverse' do
+          %i.icon-arrow-left.icon-white
+          Back to data
+      .btn-group
+        = link_to quantile_setting_reports_path(@quantile_setting), class: 'btn' do
+          %i.icon-refresh
+          Refresh
+      .btn-group
+        = link_to '#', class: 'btn btn-primary dropdown-toggle', 'data-toggle' => 'dropdown' do
+          New Report
+          %span.caret
+        %ul.dropdown-menu
+          - Report::TYPES.each do |t|
+            %li= link_to t[0], new_quantile_setting_report_path(@quantile_setting, type: t[1])
         
 = show_flash_messages
 

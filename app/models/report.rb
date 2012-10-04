@@ -5,15 +5,19 @@ class Report
   field :low_temp_threshold, type: Integer
   field :column1, type: String
   field :column2, type: String
+  field :type, type: String, default: 'extreme_day_count'
   field :status, type: String, default: 'New'
+  field :historical_year, type: Integer
+  field :predicted_year, type: Integer
   
-  attr_accessible :high_temp_threshold, :low_temp_threshold, :column1, :column2, :location_id
+  attr_accessible :high_temp_threshold, :low_temp_threshold, :column1, :column2, :location_id, :type, :historical_year, :predicted_year
   
   belongs_to :quantile_setting
   belongs_to :location
 
   accepts_nested_attributes_for :location
   
+  TYPES = [['Extreme day count', 'extreme_day_count'], ['One year quantile', 'one_year_quantile']]
   
   after_create :queue
   

@@ -32,25 +32,38 @@
   .row-fluid
     .span4
       %p
-        %b Low temp threshold:
-        = @report.low_temp_threshold
-      %p
-        %b High temp threshold:
-        = @report.high_temp_threshold
-    .span4
-      %p
-        %b Column 1:
-        = @report.column1
-      %p
-        %b Column 2:
-        = @report.column2
-    .span4
-      %p
         %b Location:
         = @report.location.try(:name)
       %p
         %b Status:
         = @report.status
+      %p
+        %b Type:
+        = @report.type.humanize
+  
+    - if @report.type == 'extreme_day_count'
+      .span4
+        %p
+          %b Low temp threshold:
+          = @report.low_temp_threshold
+        %p
+          %b High temp threshold:
+          = @report.high_temp_threshold
+      .span4
+        %p
+          %b Column 1:
+          = @report.column1
+        %p
+          %b Column 2:
+          = @report.column2
+    - else
+      .span4
+        %p
+          %b Historical year:
+          = @report.historical_year
+        %p
+          %b Predicted year:
+          = @report.predicted_year
 
 %h4 Reports
 - if @report.files.present?

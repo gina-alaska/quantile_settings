@@ -1,3 +1,4 @@
+- type = params[:type].present? ? params[:type] : @report.type
 = form_for([@quantile_setting, @report], html: { class: '' }) do |f|
   - if @report.errors.any?
     #error_explanation.alert.alert-error
@@ -7,44 +8,18 @@
       %ul
         - @report.errors.full_messages.each do |msg|
           %li= msg
-  .row-fluid
-    .span4
-      .control-group
-        = f.label :low_temp_threshold, class: 'control-label'
-        .controls
-          = f.number_field :low_temp_threshold
-    .span4
-      .control-group
-        = f.label :high_temp_threshold, class: 'control-label'
-        .controls
-          = f.number_field :high_temp_threshold
+  = f.hidden_field :type, value: type
   .row-fluid
     .span4
       .control-group
         = f.label :location_id, class: 'control-label'
         .controls
           = f.select :location_id, options_from_collection_for_select(Location.all, :id, :name)
-  .row-fluid
-    .span4
-      .control-group
-        .controls
-          %h4 Column 1
-          %label.radio
-            = f.radio_button :column1, :historical
-            Historical
-          %label.radio
-            = f.radio_button :column1, :observed
-            Observed
-    .span4
-      .control-group
-        .controls
-          %h4 Column 2
-          %label.radio
-            = f.radio_button :column2, :predicted
-            Predicted
-          %label.radio          
-            = f.radio_button :column2, :adjusted
-            Adjusted
+  - if type == 'extreme_day_count'
+    = render 'extreme_day_count_form', f: f
+  - elsif type == 'one_year_quantile'
+    = render 'one_year_quantile_form', f: f
+  
   .actions
     = link_to @report.new_record? ? quantile_setting_reports_path(@quantile_setting) : [@quantile_setting, @report], class: 'btn btn-inverse' do
       %i.icon-arrow-left.icon-white

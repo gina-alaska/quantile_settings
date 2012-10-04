@@ -1,0 +1,32 @@
+.row-fluid
+  .span4
+    .control-group
+      = f.label :low_temp_threshold, class: 'control-label'
+      .controls
+        = f.number_field :low_temp_threshold
+  .span4
+    .control-group
+      = f.label :high_temp_threshold, class: 'control-label'
+      .controls
+        = f.number_field :high_temp_threshold
+.row-fluid
+  .span4
+    .control-group
+      .controls
+        %h4 Column 1
+        %label.radio
+          = f.radio_button :column1, :historical
+          Historical
+        %label.radio
+          = f.radio_button :column1, :observed
+          Observed
+  .span4
+    .control-group
+      .controls
+        %h4 Column 2
+        %label.radio
+          = f.radio_button :column2, :predicted
+          Predicted
+        %label.radio          
+          = f.radio_button :column2, :adjusted
+          Adjusted

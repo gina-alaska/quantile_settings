@@ -1,0 +1,11 @@
+.row-fluid
+  .span4
+    .control-group
+      = f.label :historical_year, class: 'control-label'
+      .controls
+        = f.number_field :historical_year, in: @report.quantile_setting.historical_start..@report.quantile_setting.historical_end, placeholder: "YYYY"
+  .span4
+    .control-group
+      = f.label :predicted_year, class: 'control-label'
+      .controls
+        = f.number_field :predicted_year, in: @report.quantile_setting.predicted_start..@report.quantile_setting.predicted_end, placeholder: "YYYY"
