@@ -5,8 +5,12 @@ class MakeReports
     report = Report.find(report_id)
     
     report.start
-    
-    extreme_report(report)
+	
+	if report.type == 'extreme_day_count'
+		extreme_report(report)
+	else
+		one_year_report(report)
+	end
     
     report.finish
   rescue => e
@@ -39,13 +43,13 @@ class MakeReports
     script = '/home/jiang/projects/quantilemapping/v3/draw_his_obs_odt_prd_adj.py'
     data_dir = "/home/jiang/projects/quantilemapping/results/run_auto/"
     
-    data_files = "his_#{report.quantile_settings.historical_start}_#{report.quantile_settings.historical_end}.tif"
-    data_files << " obs_#{report.quantile_settings.historical_start}_#{report.quantile_settings.historical_end}.tif"
-    data_files << " odt_#{report.quantile_settings.historical_start}_#{report.quantile_settings.historical_end}.tif"
-    data_files << " prd_#{report.quantile_settings.prediction_start}_#{report.quantile_settings.prediction_end}.tif"
-    data_files << " adj_#{report.quantile_settings.prediction_start}_#{report.quantile_settings.prediction_end}.tif"
+    data_files = "his_#{report.quantile_setting.historical_start}_#{report.quantile_setting.historical_end}.tif"
+    data_files << " obs_#{report.quantile_setting.historical_start}_#{report.quantile_setting.historical_end}.tif"
+    data_files << " odt_#{report.quantile_setting.historical_start}_#{report.quantile_setting.historical_end}.tif"
+    data_files << " prd_#{report.quantile_setting.predicted_start}_#{report.quantile_setting.predicted_end}.tif"
+    data_files << " adj_#{report.quantile_setting.predicted_start}_#{report.quantile_setting.predicted_end}.tif"
     cmd = %{
-      #{script} -- #{data_dir} "#{data_files}" #{report.location.lon} #{report.location.lat} "#{report.location.name}" #{report.historical_year} #{report.prediction_year}
+      #{script} -- #{data_dir} "#{data_files}" #{report.location.lon} #{report.location.lat} "#{report.location.name}" #{report.historical_year} #{report.predicted_year}
     }
     
     puts "Running: #{cmd}"
@@ -54,7 +58,7 @@ class MakeReports
     report_path = Rails.root.join('public', 'reports', report.id.to_s).to_s
     FileUtils.mkdir_p(report_path)
     
-    reports = File.join(data_dir, "his_obs_odt_prd_adj_#{report.historical_year}_#{report.prediction_year}_#{report.locations.name.split(' ').first}.png")
+    reports = File.join(data_dir, "his_obs_odt_prd_adj_#{report.historical_year}_#{report.predicted_year}_#{report.location.name.split(' ').first}.png")
     `cp #{reports} #{report_path}` 
     
   end
