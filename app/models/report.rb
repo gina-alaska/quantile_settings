@@ -45,8 +45,11 @@ class Report
     self.save!
   end
   
+  def path
+    File.join(self.settings.path, 'reports', self.id.to_s)
+  end
+  
   def files
-    path = File.join(REPORT_BASEPATH, self.id.to_s)
     Dir.glob(File.join(path, '*.png')).collect do |f|
       f.gsub(Rails.public_path, '')
     end
