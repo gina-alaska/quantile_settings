@@ -53,10 +53,10 @@ class QuantileSetting
   
   def files
     [
-      "his_#{self.quantile_setting.historical_start}_#{self.quantile_setting.historical_end}.tif",
-      "obs_#{self.quantile_setting.historical_start}_#{self.quantile_setting.historical_end}.tif",
-      "prd_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif",
-      "adj_#{self.quantile_setting.algorithm}_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
+      "his_#{self.historical_start}_#{self.historical_end}.tif",
+      "obs_#{self.historical_start}_#{self.historical_end}.tif",
+      "prd_#{self.predicted_start}_#{self.predicted_end}.tif",
+      "adj_#{self.algorithm}_#{self.predicted_start}_#{self.predicted_end}.tif"
     ]
   end
 end
