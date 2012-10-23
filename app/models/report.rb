@@ -63,10 +63,10 @@ class Report
   
   def column2_file
     case self.column2.to_sym
-    when :predicted
+    when :unadjusted
       "prd_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
     when :adjusted
-      "adj_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
+      "adj_#{self.quantile_setting.algorithm}_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
     end
   end
 end
