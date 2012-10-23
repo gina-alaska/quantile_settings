@@ -19,6 +19,10 @@
         .controls
           = f.number_field :historical_end, in: 1957..2002, placeholder: "YYYY"
           %p.help-block Must be between 1957 and 2002
+      .control-group
+        = f.label :algorithm, class: 'control-label'
+        .controls
+          = f.select :algorithm, options_for_select(QuantileSetting::ALGORITHMS)
     .span6
       .control-group
         = f.label :predicted_start, class: 'control-label'
