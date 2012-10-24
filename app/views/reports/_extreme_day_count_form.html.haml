@@ -16,7 +16,7 @@
         %h4 Column 1
         %label.radio
           = f.radio_button :column1, :historical
-          Historical
+          Historical Model
         %label.radio
           = f.radio_button :column1, :observed
           Observed
@@ -25,8 +25,8 @@
       .controls
         %h4 Column 2
         %label.radio
-          = f.radio_button :column2, :predicted
-          Predicted
+          = f.radio_button :column2, :unadjusted
+          Unadjusted Prediction
         %label.radio          
           = f.radio_button :column2, :adjusted
-          Adjusted
+          Adjusted Prediction

@@ -1,15 +1,18 @@
 class QuantileSetting
   include Mongoid::Document
   
+  ALGORITHMS = %w{ SIMPLE RQUANT QUANT }
+  
   field :historical_start, type: Integer
   field :historical_end, type: Integer
   field :predicted_start, type: Integer
   field :predicted_end, type: Integer
+  field :algorithm, type: String, default: 'SIMPLE'
   field :status, type: String, default: 'New'
   
   has_many :reports
   
-  attr_accessible :historical_start, :historical_end, :predicted_end, :predicted_start
+  attr_accessible :historical_start, :historical_end, :predicted_end, :predicted_start, :algorithm
   
   validates :historical_start, inclusion: { in: 1957..2002, message: "%{value} must be between 1957 and 2002" }
   validates :historical_end, inclusion: { in: 1957..2002, message: "%{value} must be between 1957 and 2002" }
@@ -18,6 +21,12 @@ class QuantileSetting
   
   def as_args
     #TODO: figure out what the args should be to run the quantile command
+  end
+  
+  def path
+    return nil if self.new_record?
+    
+    Rails.root.join("public/data/#{self.id}").to_s
   end
   
   def queue
@@ -40,5 +49,15 @@ class QuantileSetting
   def finish
     self.status = 'Finished'
     self.save!
+  end
+  
+  def files
+    [
+      "his_#{self.historical_start}_#{self.historical_end}.tif",
+      "obs_#{self.historical_start}_#{self.historical_end}.tif",
+      "dlt_#{self.historical_start}_#{self.historical_end}.tif",
+      "prd_#{self.predicted_start}_#{self.predicted_end}.tif",
+      "adj_#{self.algorithm}_#{self.predicted_start}_#{self.predicted_end}.tif"
+    ]
   end
 end

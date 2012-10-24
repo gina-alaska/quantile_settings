@@ -45,8 +45,11 @@ class Report
     self.save!
   end
   
+  def path
+    File.join(self.quantile_setting.path, 'reports', self.id.to_s)
+  end
+  
   def files
-    path = File.join(REPORT_BASEPATH, self.id.to_s)
     Dir.glob(File.join(path, '*.png')).collect do |f|
       f.gsub(Rails.public_path, '')
     end
@@ -63,10 +66,10 @@ class Report
   
   def column2_file
     case self.column2.to_sym
-    when :predicted
+    when :unadjusted
       "prd_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
     when :adjusted
-      "adj_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
+      "adj_#{self.quantile_setting.algorithm}_#{self.quantile_setting.predicted_start}_#{self.quantile_setting.predicted_end}.tif"
     end
   end
 end
