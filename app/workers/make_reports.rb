@@ -22,7 +22,7 @@ class MakeReports
   def extreme_report(report)
     script = '/home/jiang/projects/quantilemapping/v3/draw_extreme_day_count.py'
     #data_dir = "/home/jiang/projects/quantilemapping/results/run_auto/"
-    data_dir = report.quantile_settings.path
+    data_dir = report.quantile_setting.path
     
     # SCRIPT      LIST OF TILES                        LON     LAT     TITLE            LOW TEMP   HIGH TEMP
     # #{script} "obs_YYYY_YYYY.tif adj_YYYY_YYYY.tif"  213.75  53.75   "Gulf of Alaska" 2.0        15.0
