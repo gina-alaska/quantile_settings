@@ -42,7 +42,7 @@ class MakeReports
     #draw_his_obs_odt_prd_adj.py $data_dir "his_1971_2000.tif obs_1971_2000.tif odt_1971_2000.tif prd_2071_2100.tif adj_2071_2100.tif" 213.75 53.75 "Gulf of Alaska" "1976" "2076"
     
     script = '/home/jiang/projects/quantilemapping/v3/draw_his_obs_odt_prd_adj.py'
-    data_dir = "/home/jiang/projects/quantilemapping/results/run_auto/"
+    data_dir = report.quantile_setting.path
     
     data_files = "his_#{report.quantile_setting.historical_start}_#{report.quantile_setting.historical_end}.tif"
     data_files << " obs_#{report.quantile_setting.historical_start}_#{report.quantile_setting.historical_end}.tif"
@@ -56,11 +56,10 @@ class MakeReports
     puts "Running: #{cmd}"
     puts `#{cmd}` 
     
-    report_path = Rails.root.join('public', 'reports', report.id.to_s).to_s
-    FileUtils.mkdir_p(report_path)
+    FileUtils.mkdir_p(report.path)
     
     reports = File.join(data_dir, "his_obs_odt_prd_adj_#{report.historical_year}_#{report.predicted_year}_#{report.location.name.split(' ').first}.png")
-    `cp #{reports} #{report_path}` 
+    `cp #{reports} #{report.path}` 
     
   end
 end
