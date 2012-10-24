@@ -55,7 +55,9 @@ class QuantileSetting
     [
       "his_#{self.historical_start}_#{self.historical_end}.tif",
       "obs_#{self.historical_start}_#{self.historical_end}.tif",
+      "dlt_#{self.historical_start}_#{self.historical_end}.tif",
       "prd_#{self.predicted_start}_#{self.predicted_end}.tif",
+      "sdt_#{self.predicted_start}_#{self.predicted_end}.tif",
       "adj_#{self.algorithm}_#{self.predicted_start}_#{self.predicted_end}.tif"
     ]
   end
