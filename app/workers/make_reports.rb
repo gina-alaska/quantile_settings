@@ -32,11 +32,10 @@ class MakeReports
     puts "Running: #{cmd}"
     puts `#{cmd}` 
     
-    report_path = Rails.root.join('public', 'reports', report.id.to_s).to_s
-    FileUtils.mkdir_p(report_path)
+    FileUtils.mkdir_p(report.path)
     
     reports = File.join(data_dir, "extreme_day_count_#{File.basename(report.column1_file, '.tif')}_#{File.basename(report.column2_file, '.tif')}_#{report.location.name.split(' ').first}_*.png")
-    `cp #{reports} #{report_path}` 
+    `mv #{reports} #{report.path}` 
   end
   
   def one_year_report(report)
