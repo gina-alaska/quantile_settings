@@ -46,7 +46,7 @@ class Report
   end
   
   def path
-    File.join(self.settings.path, 'reports', self.id.to_s)
+    File.join(self.quantile_setting.path, 'reports', self.id.to_s)
   end
   
   def files
