@@ -50,7 +50,7 @@ class MakeReports
     # data_files << " prd_#{report.quantile_setting.predicted_start}_#{report.quantile_setting.predicted_end}.tif"
     # data_files << " adj_#{report.quantile_setting.predicted_start}_#{report.quantile_setting.predicted_end}.tif"
     cmd = %{
-      #{script} -- #{data_dir} "#{report.quantile_setting.files}" #{report.location.lon} #{report.location.lat} "#{report.location.name}" #{report.historical_year} #{report.predicted_year}
+      #{script} -- #{data_dir} "#{report.quantile_setting.files.join(' ')}" #{report.location.lon} #{report.location.lat} "#{report.location.name}" #{report.historical_year} #{report.predicted_year}
     }
     
     puts "Running: #{cmd}"
